@@ -20,3 +20,16 @@ class AssemblatoreStruttura extends Thread {
             System.out.println("[THREAD ASSEMBLATORE] Inizio assemblaggio struttura valigia...");
             System.out.println("[THREAD ASSEMBLATORE] Taglio e sagomatura pannelli rigidi in corso...");
             Thread.sleep(800);
+            System.out.println("[THREAD ASSEMBLATORE] Assemblaggio telaio principale...");
+            Thread.sleep(700);
+
+            System.out.println("[THREAD ASSEMBLATORE] Inserimento rinforzi interni e angolari...");
+            Thread.sleep(500);
+
+            System.out.println("[THREAD ASSEMBLATORE] ✓ Struttura completata!");
+
+        } catch (InterruptedException e) {
+            System.err.println("Errore nel thread assemblatore: " + e.getMessage());
+        }
+    }
+}

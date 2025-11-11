@@ -28,3 +28,22 @@ public class GestoreProduzioneValigie {
         System.out.println("[PROCESSO PADRE] Avvio thread di assemblaggio e installazione...\n");
         assemblatore.start();
         installatore.start();
+        try {
+            // Attesa del completamento di entrambi i thread
+            assemblatore.join();
+            installatore.join();
+
+            // Controllo qualità finale (eseguito dal processo padre)
+            System.out.println("\n[PROCESSO PADRE] Tutti i thread hanno completato il lavoro.");
+            System.out.println("[PROCESSO PADRE] Eseguo controllo qualità finale...");
+            Thread.sleep(1000);
+            System.out.println("[PROCESSO PADRE] Controllo qualità superato! ✓");
+            System.out.println("[PROCESSO PADRE] Valigia completata e pronta per la spedizione.\n");
+
+        } catch (InterruptedException e) {
+            System.err.println("Errore durante l'attesa dei thread: " + e.getMessage());
+        }
+
+        System.out.println("=== PRODUZIONE COMPLETATA CON SUCCESSO ===");
+    }
+}
